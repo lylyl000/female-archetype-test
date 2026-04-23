@@ -4,7 +4,6 @@ import { escapeHtml } from "./dom.js";
 import { ARCHETYPES } from "../data/archetypes.js";
 
 export function renderDecor() {
-  // 轻微背景元素：星点与叶片
   const stars = [
     { x: 12, y: 22, s: 1.0 },
     { x: 82, y: 16, s: 1.1 },
@@ -67,19 +66,21 @@ export function viewStart() {
   `;
 }
 
-export function viewQuiz({ index, answersById, displayOrder }) {
-  // 注意：displayOrder 只影响“显示顺序”，不影响真实 A/B/C 身份与计分
+export function viewQuiz({ index, answersById, slotMap }) {
+  // slotMap 只影响“显示槽位 A/B/C 对应哪段文案”，不改变原始选项身份与计分
   const q = QUESTIONS[index];
   const picked = answersById[q.id];
   const progress = Math.round(((index + 1) / QUESTIONS.length) * 100);
-  const order = displayOrder ?? ["A", "B", "C"];
+  const slots = ["A", "B", "C"];
+  const map = slotMap ?? { A: "A", B: "B", C: "C" };
 
-  const opt = (k) => {
-    const selected = picked === k ? "selected" : "";
+  const opt = (slotLabel) => {
+    const originalKey = map[slotLabel] ?? slotLabel;
+    const selected = picked === originalKey ? "selected" : "";
     return `
-      <button type="button" class="option ${selected}" data-pick="${k}" data-qid="${q.id}">
-        <span class="label" aria-hidden="true">${k}</span>
-        <span class="text">${escapeHtml(q.options[k])}</span>
+      <button type="button" class="option ${selected}" data-pick="${originalKey}" data-qid="${q.id}">
+        <span class="label" aria-hidden="true">${slotLabel}</span>
+        <span class="text">${escapeHtml(q.options[originalKey])}</span>
       </button>
     `;
   };
@@ -90,9 +91,7 @@ export function viewQuiz({ index, answersById, displayOrder }) {
   return `
     <div class="shell fadeSlideIn">
       <div class="topbar">
-        <div class="brand">
-          <div class="name">YOUR INNER ARCHETYPE TEST</div>
-        </div>
+        <div></div>
         <div class="questionMeta" style="margin:0">
           <div>Question ${String(index + 1).padStart(2, "0")} / ${QUESTIONS.length}</div>
         </div>
@@ -107,7 +106,7 @@ export function viewQuiz({ index, answersById, displayOrder }) {
         <div style="height:8px"></div>
         <h2 class="qTitle">${escapeHtml(q.text)}</h2>
         <div class="options">
-          ${order.map((k) => opt(k)).join("")}
+          ${slots.map((s) => opt(s)).join("")}
         </div>
 
         <div class="navRow">
