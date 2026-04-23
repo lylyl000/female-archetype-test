@@ -1,9 +1,10 @@
 :root{
-  --bg: #F5F0EA;
-  --surface: #F8F4EF;
+  /* New global background: cool muted mauve-gray (distinct from HERTI cream) */
+  --bg: #F2EEF3;
+  --surface: #F7F3F6;
   --text: #1F1A17;
   --muted: #8E847A;
-  --border: #DDD3C9;
+  --border: #DDD5DA;
 
   --r-xl: 22px;
   --r-lg: 18px;
@@ -177,6 +178,8 @@ button{font:inherit}
   letter-spacing:.10em;
   color: var(--muted);
   text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .qCard{
@@ -188,6 +191,13 @@ button{font:inherit}
   font-size:20px;
   line-height:1.8;
   letter-spacing:.01em;
+}
+
+/* Mobile quiz typography (375/390/414) */
+@media (max-width: 430px){
+  .topbar{gap:8px}
+  .questionMeta{font-size:11px; letter-spacing:.08em}
+  .qTitle{font-size:18px; line-height:1.75}
 }
 
 .options{
@@ -431,7 +441,6 @@ button{font:inherit}
   letter-spacing:.02em;
   font-weight:600;
   font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
-  /* 模块标题层级：浅咖/灰褐，克制但可读 */
   color: color-mix(in srgb, var(--muted) 92%, var(--text));
 }
 
