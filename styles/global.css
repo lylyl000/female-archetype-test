@@ -1,10 +1,10 @@
 :root{
-  /* New global background: cool muted mauve-gray (distinct from HERTI cream) */
-  --bg: #F2EEF3;
-  --surface: #F7F3F6;
+  /* New global background: soft misty lavender-pink (cooler, cleaner, less "paper/cream") */
+  --bg: #F4F1F8;
+  --surface: #FAF6FB;
   --text: #1F1A17;
   --muted: #8E847A;
-  --border: #DDD5DA;
+  --border: #DED7E3;
 
   --r-xl: 22px;
   --r-lg: 18px;
@@ -375,6 +375,29 @@ button{font:inherit}
   max-width: 36ch;
   margin:0;
 }
+
+/* Mobile home poster tuning */
+@media (max-width: 430px){
+  /* slightly more screen width, but keep comfortable copy padding */
+  .shell{padding-left:14px; padding-right:14px}
+  .poster{padding-left:20px; padding-right:20px}
+
+  /* Force the key tagline to stay one line without looking cramped */
+  .startSubtitle{
+    white-space: nowrap;
+    font-size:12px;
+    letter-spacing:.02em;
+  }
+
+  /* Give the 2-line guidance copy more breathing room */
+  .startLead{
+    max-width: 32ch;
+    padding-left:10px;
+    padding-right:10px;
+    font-size:12px;
+    line-height:1.9;
+  }
+}
 .poster .bottomMeta{
   margin-top:auto;
   padding-top:22px;
@@ -441,6 +464,7 @@ button{font:inherit}
   letter-spacing:.02em;
   font-weight:600;
   font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+  /* 模块标题层级：浅咖/灰褐，克制但可读 */
   color: color-mix(in srgb, var(--muted) 92%, var(--text));
 }
 
