@@ -1,10 +1,10 @@
 :root{
-  /* New global background: soft misty lavender-pink (cooler, cleaner, less "paper/cream") */
-  --bg: #F4F1F8;
-  --surface: #FAF6FB;
+  /* New global background (v2): cooler misty lilac-rose, more airy and less "HERTI-like" */
+  --bg: #F1F3FA;
+  --surface: #F8F9FD;
   --text: #1F1A17;
   --muted: #8E847A;
-  --border: #DED7E3;
+  --border: #DCDDEA;
 
   --r-xl: 22px;
   --r-lg: 18px;
@@ -361,6 +361,11 @@ button{font:inherit}
   align-items:center;
   text-align:center;
 }
+
+/* Home title tone: keep focus but less "ink black" */
+.poster .title{
+  color: color-mix(in srgb, var(--text) 78%, var(--muted));
+}
 .poster .brandline{
   font-size:12px;
   letter-spacing:.28em;
@@ -381,6 +386,12 @@ button{font:inherit}
   /* slightly more screen width, but keep comfortable copy padding */
   .shell{padding-left:14px; padding-right:14px}
   .poster{padding-left:20px; padding-right:20px}
+
+  /* Reduce the main title a touch on mobile */
+  .poster .title{
+    font-size:30px;
+    line-height:1.22;
+  }
 
   /* Force the key tagline to stay one line without looking cramped */
   .startSubtitle{
