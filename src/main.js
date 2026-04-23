@@ -16,7 +16,8 @@ const state = {
   quizIndex: 0,
   answersById: {}, // { Q1: 'A'|'B'|'C' }
   lastResult: null,
-  optionOrderByQid: {}, // { Q1: ['B','A','C'] ... } for this session
+  // slotMapByQid: 固定槽位 A/B/C -> 原始 optionKey (A/B/C)
+  slotMapByQid: {},
 };
 
 function shuffle3(arr) {
@@ -29,11 +30,33 @@ function shuffle3(arr) {
   return a;
 }
 
+function sameOrder(a, b) {
+  if (!a || !b || a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+  return true;
+}
+
+function shuffle3MoreNoticeable() {
+  const base = ["A", "B", "C"];
+  let out = shuffle3(base);
+  let tries = 0;
+  while (sameOrder(out, base) && tries < 8) {
+    out = shuffle3(base);
+    tries++;
+  }
+  return out;
+}
+
 function startNewSession() {
   // 每次开始新测试时生成一次随机显示顺序；同一次测试中保持固定
-  state.optionOrderByQid = {};
+  state.slotMapByQid = {};
   for (const q of QUESTIONS) {
-    state.optionOrderByQid[q.id] = shuffle3(["A", "B", "C"]);
+    const shuffledOriginalKeys = shuffle3MoreNoticeable(); // ['B','C','A'] etc.
+    state.slotMapByQid[q.id] = {
+      A: shuffledOriginalKeys[0],
+      B: shuffledOriginalKeys[1],
+      C: shuffledOriginalKeys[2],
+    };
   }
 }
 
@@ -47,7 +70,7 @@ function resetAll() {
   state.quizIndex = 0;
   state.answersById = {};
   state.lastResult = null;
-  state.optionOrderByQid = {};
+  state.slotMapByQid = {};
   go("start");
 }
 
@@ -66,10 +89,9 @@ function render() {
 
   if (state.route === "start") body = viewStart();
   else if (state.route === "quiz") {
-    // 本次 session 的显示顺序：仅用于渲染，不改变 options/计分规则
     const q = QUESTIONS[state.quizIndex];
-    const displayOrder = state.optionOrderByQid[q.id] ?? ["A", "B", "C"];
-    body = viewQuiz({ index: state.quizIndex, answersById: state.answersById, displayOrder });
+    const slotMap = state.slotMapByQid[q.id] ?? { A: "A", B: "B", C: "C" };
+    body = viewQuiz({ index: state.quizIndex, answersById: state.answersById, slotMap });
   }
   else if (state.route === "result") body = viewResult({ result: state.lastResult });
   else body = viewStart();
