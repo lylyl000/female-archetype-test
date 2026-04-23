@@ -1,10 +1,10 @@
 :root{
-  /* New global background (v2): cooler misty lilac-rose, more airy and less "HERTI-like" */
-  --bg: #F1F3FA;
-  --surface: #F8F9FD;
+  /* New global background: soft misty lavender-pink (cooler, cleaner, less "paper/cream") */
+  --bg: #F3EEF2;
+  --surface: #FAF6F8;
   --text: #1F1A17;
   --muted: #8E847A;
-  --border: #DCDDEA;
+  --border: #DED6DC;
 
   --r-xl: 22px;
   --r-lg: 18px;
@@ -362,9 +362,9 @@ button{font:inherit}
   text-align:center;
 }
 
-/* Home title tone: keep focus but less "ink black" */
+/* Home title: slightly softened ink */
 .poster .title{
-  color: color-mix(in srgb, var(--text) 78%, var(--muted));
+  color: color-mix(in srgb, var(--text) 86%, var(--muted));
 }
 .poster .brandline{
   font-size:12px;
@@ -385,13 +385,7 @@ button{font:inherit}
 @media (max-width: 430px){
   /* slightly more screen width, but keep comfortable copy padding */
   .shell{padding-left:14px; padding-right:14px}
-  .poster{padding-left:20px; padding-right:20px}
-
-  /* Reduce the main title a touch on mobile */
-  .poster .title{
-    font-size:30px;
-    line-height:1.22;
-  }
+  .poster{padding-left:24px; padding-right:24px}
 
   /* Force the key tagline to stay one line without looking cramped */
   .startSubtitle{
@@ -402,11 +396,17 @@ button{font:inherit}
 
   /* Give the 2-line guidance copy more breathing room */
   .startLead{
-    max-width: 32ch;
-    padding-left:10px;
-    padding-right:10px;
+    max-width: 34ch;
+    padding-left:12px;
+    padding-right:12px;
     font-size:12px;
     line-height:1.9;
+  }
+
+  /* Home title slightly smaller on mobile */
+  .poster .title{
+    font-size:32px;
+    line-height:1.22;
   }
 }
 .poster .bottomMeta{
