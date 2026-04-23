@@ -6,7 +6,7 @@
 
 这是一个零依赖静态项目，你可以用任意本地静态服务器打开。
 
-### 方式 A：Python（推荐）
+###
 
 ```bash
 cd /Users/luyilin/Desktop/AIDM_Portfolio/test
@@ -15,13 +15,10 @@ python3 -m http.server 5173
 
 然后在浏览器打开 `http://localhost:5173`。
 
-### 方式 B：VSCode / Cursor Live Server
 
-直接右键 `index.html` 用 Live Server 打开即可。
+## 
 
-## 部署建议
-
-- Vercel / Netlify / Cloudflare Pages：选择 **静态站点** 部署，发布目录为仓库根目录（含 `index.html`）。
+- Cloudflare Pages：选择 **静态站点** 部署，发布目录为仓库根目录（含 `index.html`）。
 
 ## 目录结构
 
