@@ -4,6 +4,7 @@ import { escapeHtml } from "./dom.js";
 import { ARCHETYPES } from "../data/archetypes.js";
 
 export function renderDecor() {
+  // 轻微背景元素：星点与叶片
   const stars = [
     { x: 12, y: 22, s: 1.0 },
     { x: 82, y: 16, s: 1.1 },
@@ -46,9 +47,9 @@ export function viewStart() {
             <span class="titleLine">是哪种能量形态？</span>
           </h1>
 
-          <p class="subtitle" style="margin-top:12px">在八种自然原型里，遇见更接近自己的那一种力量。</p>
+          <p class="subtitle startSubtitle" style="margin-top:12px">在八种自然原型里，遇见更接近自己的那一种力量。</p>
 
-          <p class="lead" style="margin-top:10px">
+          <p class="lead startLead" style="margin-top:10px">
             请尽量选“更像你真实反应”的选项。<br />
             没有标准答案，你只是在更清楚地看见自己。
           </p>
@@ -67,7 +68,7 @@ export function viewStart() {
 }
 
 export function viewQuiz({ index, answersById, slotMap }) {
-  // slotMap 只影响“显示槽位 A/B/C 对应哪段文案”，不改变原始选项身份与计分
+  // 注意：slotMap 只影响“显示槽位 A/B/C 对应哪段文案”，不改变原始选项身份与计分
   const q = QUESTIONS[index];
   const picked = answersById[q.id];
   const progress = Math.round(((index + 1) / QUESTIONS.length) * 100);
