@@ -1,0 +1,448 @@
+:root{
+  --bg: #F5F0EA;
+  --surface: #F8F4EF;
+  --text: #1F1A17;
+  --muted: #8E847A;
+  --border: #DDD3C9;
+
+  --r-xl: 22px;
+  --r-lg: 18px;
+  --r-md: 16px;
+
+  --ease: cubic-bezier(.22,.9,.24,1);
+  --shadow-soft: 0 1px 0 rgba(31, 26, 23, 0.05);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Noto Sans SC", system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  color:var(--text);
+  background: var(--bg);
+  overflow-x:hidden;
+}
+
+a{color:inherit}
+button{font:inherit}
+
+.app{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+.shell{
+  width:min(780px, 100%);
+  margin:0 auto;
+  padding:32px 18px 56px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.page{
+  min-height: calc(100dvh - 88px);
+  display:flex;
+  flex-direction:column;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.brand .name{
+  font-family: "Noto Sans SC", system-ui, sans-serif;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-size:12px;
+  color: var(--muted);
+}
+
+.brand.center{
+  justify-content:center;
+}
+
+.card{
+  background: var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-xl);
+  box-shadow: var(--shadow-soft);
+}
+
+.card.pad{
+  padding:24px 18px;
+}
+
+.title{
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC","Noto Sans SC",serif;
+  font-size:34px;
+  line-height:1.25;
+  margin:0;
+  letter-spacing:.02em;
+}
+
+.title.en{
+  font-family:"Cormorant Garamond","EB Garamond",serif;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+
+.subtitle{
+  margin:10px 0 0;
+  font-size:15px;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+.muted{color:var(--muted)}
+.small{font-size:13px; line-height:1.7}
+
+.row{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+.spacer{flex:1}
+
+.btn{
+  border:1px solid var(--text);
+  background: transparent;
+  color: var(--text);
+  padding:12px 16px;
+  border-radius:999px;
+  box-shadow: none;
+  cursor:pointer;
+  transition: background .18s var(--ease), transform .12s var(--ease), border-color .18s var(--ease), color .18s var(--ease);
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:hover{background: rgba(31,26,23,.04)}
+.btn:active{transform: translateY(1px)}
+.btn.secondary{
+  border-color: var(--border);
+  color: var(--text);
+}
+.btn.ghost{
+  background: transparent;
+  color: var(--muted);
+  border-color: transparent;
+}
+.btn[disabled]{
+  opacity:.55;
+  cursor:not-allowed;
+  filter:saturate(.8);
+}
+
+.btn.primary{
+  background: var(--text);
+  color: var(--surface);
+}
+.btn.primary:hover{background: rgba(31,26,23,.90)}
+
+.metaLine{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color: var(--muted);
+}
+
+.progressWrap{
+  height:3px;
+  background: transparent;
+  border-radius:999px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+.progressBar{
+  height:100%;
+  width:0%;
+  background: var(--text);
+  border-radius:999px;
+  transition: width .28s var(--ease);
+}
+
+.questionMeta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font-size:12px;
+  letter-spacing:.10em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.qCard{
+  padding:26px 18px;
+}
+.qTitle{
+  margin:0;
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+  font-size:20px;
+  line-height:1.8;
+  letter-spacing:.01em;
+}
+
+.options{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:14px;
+}
+.option{
+  width:100%;
+  text-align:left;
+  border-radius:16px;
+  padding:16px 16px;
+  background: var(--surface);
+  border:1px solid var(--border);
+  box-shadow: none;
+  cursor:pointer;
+  transition: transform .14s var(--ease), border-color .18s var(--ease), background .18s var(--ease);
+}
+.option:hover{transform: translateY(-1px); background: rgba(31,26,23,.015)}
+.option:active{transform: translateY(0)}
+.option .label{
+  display:inline-flex;
+  width:28px;height:28px;
+  border-radius:999px;
+  align-items:center;justify-content:center;
+  margin-right:10px;
+  background: transparent;
+  border:1px solid var(--border);
+  font-family:"Cormorant Garamond","EB Garamond",serif;
+  font-style: italic;
+  letter-spacing:.08em;
+  color: color-mix(in srgb, var(--muted) 70%, transparent);
+  font-size:12px;
+  opacity:.75;
+}
+.option.selected{
+  border-color: rgba(31,26,23,.55);
+  background: rgba(31,26,23,.02);
+}
+.option .text{
+  font-size:15px;
+  line-height:1.85;
+  color: var(--text);
+}
+
+.navRow{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+}
+.navRow .btn{flex:1}
+
+.fadeSlideIn{
+  animation: fadeSlideIn .28s var(--ease) both;
+}
+@keyframes fadeSlideIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+.resultFade{
+  animation: resultFade .38s var(--ease) both;
+}
+@keyframes resultFade{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+.center{
+  text-align:center;
+}
+
+.grid3{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+}
+@media (min-width: 720px){
+  .shell{padding:48px 22px 72px}
+  .title{font-size:40px}
+  .card.pad{padding:30px 26px}
+  .qCard{padding:32px 26px}
+}
+
+.quote{
+  margin:18px auto 0;
+  max-width: 52ch;
+  padding:0;
+  border-radius:0;
+  background: transparent;
+  border:0;
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+  font-size:14px;
+  line-height:1.85;
+  text-align:center;
+  color: var(--text);
+}
+
+.sectionTitle{
+  margin:26px 0 10px;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.portrait{
+  margin:0;
+  white-space:pre-line;
+  line-height:2.0;
+  font-size:15px;
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+}
+
+.divider{
+  height:1px;
+  background: var(--border);
+  margin:24px 0;
+}
+
+.shareBox{
+  padding:14px 14px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  background: transparent;
+}
+.shareText{
+  margin:0;
+  font-size:14px;
+  line-height:1.8;
+  color: var(--muted);
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:22px;
+  transform: translateX(-50%);
+  background: rgba(31,26,23,.92);
+  color: rgba(248,244,239,.98);
+  padding:10px 12px;
+  border-radius:999px;
+  box-shadow: 0 6px 18px rgba(31,26,23,.18);
+  font-size:13px;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .22s var(--ease), transform .22s var(--ease);
+}
+.toast.show{
+  opacity:1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* Start poster */
+.poster{
+  padding:56px 18px 28px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  align-items:center;
+  text-align:center;
+}
+.poster .brandline{
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.poster .lead{
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+  font-size:15px;
+  line-height:1.9;
+  color: var(--muted);
+  max-width: 36ch;
+  margin:0;
+}
+.poster .bottomMeta{
+  margin-top:auto;
+  padding-top:22px;
+  font-size:12px;
+  letter-spacing:.12em;
+  color: var(--muted);
+}
+
+.titleLine{
+  display:block;
+}
+
+.startMeta{
+  color: color-mix(in srgb, var(--muted) 78%, transparent);
+}
+
+/* Result */
+.resultWrap{
+  padding:26px 18px;
+}
+.kicker{
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin:0;
+}
+.keywordLine{
+  font-size:14px;
+  line-height:1.8;
+  letter-spacing:.02em;
+  color: color-mix(in srgb, var(--muted) 92%, transparent);
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+}
+.cnTitle{
+  margin:10px 0 0;
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+  font-size:22px;
+  letter-spacing:.03em;
+}
+.enHero{
+  margin:10px 0 0;
+  font-family:"Cormorant Garamond","EB Garamond",serif;
+  font-size:46px;
+  letter-spacing:.20em;
+  text-transform: uppercase;
+  font-weight:500;
+  line-height:1.0;
+}
+@media (min-width:720px){
+  .enHero{font-size:64px}
+}
+.btnRow{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+.btnRow .btn{flex:1}
+
+.moduleTitle{
+  margin:0;
+  font-size:16px;
+  line-height:1.5;
+  letter-spacing:.02em;
+  font-weight:600;
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+  /* 模块标题层级：浅咖/灰褐，克制但可读 */
+  color: color-mix(in srgb, var(--muted) 92%, var(--text));
+}
+
+.moduleTitle.spacious + .portrait{
+  margin-top:24px;
+}
+
+.shareBar{
+  text-align:center;
+}
+.shareBar .shareText{
+  text-align:center;
+}
+
