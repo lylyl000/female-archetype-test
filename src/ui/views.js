@@ -50,7 +50,7 @@ export function viewStart() {
 
           <p class="lead startLead" style="margin-top:10px">
             请尽量选“更像你真实反应”的选项。<br />
-            没有标准答案，你只是在更清楚地看见自己。
+            没有标准答案，<br />你只是在更清楚地看见自己。
           </p>
 
           <div style="height:14px"></div>
