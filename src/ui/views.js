@@ -4,7 +4,6 @@ import { escapeHtml } from "./dom.js";
 import { ARCHETYPES } from "../data/archetypes.js";
 
 export function renderDecor() {
-  // 轻微背景元素：星点与叶片
   const stars = [
     { x: 12, y: 22, s: 1.0 },
     { x: 82, y: 16, s: 1.1 },
